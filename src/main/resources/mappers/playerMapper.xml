@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.kpu.blackjack.mapper.PlayerMapper">
+ 	<select id="getTime" resultType="string">
+ 		select now()
+ 	</select>
+ 	
+ 	<select id="getMoney" resultType="Player">
+ 		select * from free_hes where name = #{name}
+ 	</select>
+ 	
+     <insert id="insert"> 
+   		insert into free_hes (name, money) values
+ 		(#{name}, #{money})
+     </insert> 
+ 	
+     <update id="update">
+	 	update free_hes set money=#{money} 
+		 where name = #{name}
+    </update>
+ 
+    <delete id="delete">
+		delete from free_hes where name = #{name}
+    </delete>
+	
+</mapper>  
