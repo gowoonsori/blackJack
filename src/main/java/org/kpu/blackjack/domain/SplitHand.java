@@ -5,16 +5,18 @@ import java.util.List;
 
 public final class SplitHand {
 	private final List<Card> splitLeftCards = new ArrayList<Card>();
-	private final List<Card> splitRightCards = new ArrayList<Card>();
 	private String splitLeftGameMessage = "";
-	private String splitRightGameMessage = "";
 	private String splitLeftHandValue = "";
-	private String splitRightHandValue = "";
 	private boolean splitLeftBust;
 	private Result leftResult=Result.DRAW;
+	
+	private final List<Card> splitRightCards = new ArrayList<Card>();
+	private String splitRightGameMessage = "";
+	private String splitRightHandValue = "";
 	private boolean splitRightBust;
 	private Result rightResult = Result.DRAW;
 
+	/*Card가 21을 넘었는지 확인 */
 	public boolean checkIfSplitHandBust(List<Card> cards, boolean isSplitLeft) {
 		int total = 0;
 		for (Card card : cards) {
@@ -38,6 +40,7 @@ public final class SplitHand {
 		return false;
 	}
 
+	/*카드 값 계산후 message set*/
 	public void calculateSplitHandValues(List<Card> cards,
 		boolean playerFinishedDrawingCards, boolean isSplitLeft) {
 		int total = 0;
@@ -55,84 +58,41 @@ public final class SplitHand {
 		}
 	}
 
+	/*카드 값 계산*/
 	private String calculateHandValue(boolean playerFinishedDrawingCards, int total, int numberOfAces) {
 		String handValue;
 		handValue = String.valueOf(total);
 		if ((total <= 11) && numberOfAces != 0) {
-			if (playerFinishedDrawingCards) {
-				handValue = String.valueOf(total + 10);
-			} else {
-				handValue = handValue + " or " + String.valueOf(total + 10);
-			}
+			if (playerFinishedDrawingCards) handValue = String.valueOf(total + 10);
+			 else handValue = handValue + " or " + String.valueOf(total + 10);
 		}	
 		return handValue;
 	}
 
+	/*Ace개수 증가*/
 	private int ifAceThenIncrementAceCount(int numberOfAces, Card card) {
-		if ((card.getRank().getCardValue() == 1)) {
-			numberOfAces++;
-		}
+		if (card.getRank().getCardValue() == 1) numberOfAces++;
 		return numberOfAces;
 	}
-	public String getSplitLeftGameMessage() {
-		return splitLeftGameMessage;
-	}
-
-	public void setSplitLeftGameMessage(String splitLeftGameMessage) {
-		this.splitLeftGameMessage = splitLeftGameMessage;
-	}
-	public String getSplitRightGameMessage() {
-		return splitRightGameMessage;
-	}
-
-	public void setSplitRightGameMessage(String splitRightGameMessage) {
-		this.splitRightGameMessage = splitRightGameMessage;
-	}
-
-	public boolean isSplitLeftBust() {
-		return splitLeftBust;
-	}
-	public void setSplitLeftBust(boolean splitLeftBust) {
-		this.splitLeftBust = splitLeftBust;
-	}
-
-	public boolean isSplitRightBust() {
-		return splitRightBust;
-	}
-	public void setSplitRightBust(boolean splitRightBust) {
-		this.splitRightBust = splitRightBust;
-	}
-	public String getSplitLeftHandValue() {
-		return splitLeftHandValue;
-	}
-	public void setSplitLeftHandValue(String splitLeftHandValue) {
-		this.splitLeftHandValue = splitLeftHandValue;
-	}
-	public String getSplitRightHandValue() {
-		return splitRightHandValue;
-	}
-	public void setSplitRightHandValue(String splitRightHandValue) {
-		this.splitRightHandValue = splitRightHandValue;
-	}
-
-	public List<Card> getSplitLeftCards() {
-		return splitLeftCards;
-	}
-
-	public List<Card> getSplitRightCards() {
-		return splitRightCards;
-	}
 	
-	public Result getLeftResult() {
-		return leftResult;
-	}
-	public void setLeftResult(Result result) {
-		this.leftResult= result;
-	}
-	public Result getRightResult() {
-		return rightResult;
-	}
-	public void setRightResult(Result result) {
-		this.rightResult= result;
-	}
+	
+	public String getSplitLeftGameMessage() { return splitLeftGameMessage;	}
+	public String getSplitRightGameMessage() {	return splitRightGameMessage;}
+	public boolean isSplitLeftBust() {	return splitLeftBust;}
+	public boolean isSplitRightBust() {	return splitRightBust;}
+	public String getSplitLeftHandValue() {return splitLeftHandValue;}
+	public String getSplitRightHandValue() {	return splitRightHandValue;}
+	public List<Card> getSplitLeftCards() {	return splitLeftCards;}
+	public List<Card> getSplitRightCards() {	return splitRightCards;}
+	public Result getLeftResult() {	return leftResult;}
+	public Result getRightResult() {	return rightResult;}
+
+	public void setSplitLeftGameMessage(String splitLeftGameMessage) {this.splitLeftGameMessage = splitLeftGameMessage;	}
+	public void setSplitRightGameMessage(String splitRightGameMessage) {this.splitRightGameMessage = splitRightGameMessage;}
+	public void setSplitLeftBust(boolean splitLeftBust) {this.splitLeftBust = splitLeftBust;}
+	public void setSplitRightBust(boolean splitRightBust) {	this.splitRightBust = splitRightBust;}
+	public void setSplitLeftHandValue(String splitLeftHandValue) {	this.splitLeftHandValue = splitLeftHandValue;}
+	public void setSplitRightHandValue(String splitRightHandValue) {	this.splitRightHandValue = splitRightHandValue;}
+	public void setLeftResult(Result result) {	this.leftResult= result;}
+	public void setRightResult(Result result) {	this.rightResult= result;}
 }

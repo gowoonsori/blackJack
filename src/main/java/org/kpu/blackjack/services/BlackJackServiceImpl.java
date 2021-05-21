@@ -7,9 +7,13 @@ import org.kpu.blackjack.domain.Result;
 import org.kpu.blackjack.domain.Round;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
+@Transactional(propagation=Propagation.REQUIRES_NEW, isolation=Isolation.SERIALIZABLE)
 public final class BlackJackServiceImpl implements BlackJackService {
 	
 	@Autowired
@@ -127,6 +131,7 @@ public final class BlackJackServiceImpl implements BlackJackService {
 	
 	/*배팅 금액 변경*/
 	@Override
+	@Transactional(propagation=Propagation.NOT_SUPPORTED)
 	public Round changeBet(String betSize) {		
 		if (Integer.valueOf(betSize) <= 0) {
 			throw new IllegalArgumentException("Invalid Value " + betSize);			

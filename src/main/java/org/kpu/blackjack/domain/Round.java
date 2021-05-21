@@ -20,7 +20,6 @@ public class Round {
 	private final List<Card> dealerCards = new ArrayList<Card>();
 	private int dealerHandValue;
 	private String gameMessage = "";
-	//private double playerCredits;  //
 	
 	/*카드 값 계산*/
 	public void calculateHandValues(boolean thePlayerIsFinishedDrawingCards) {
@@ -231,7 +230,7 @@ public class Round {
 
 	/*split할 수 있는 지 검사*/
 	public void checkIfPlayerCanSplit() {
-		if (this.playerCards.get(0).getRank().getCardValue() == this.playerCards.get(1).getRank().getCardValue()) {
+		if (this.playerCards.get(0).getRank().getCardString().equals(this.playerCards.get(1).getRank().getCardString())) {
 			this.setPlayerCanSplit(true);
 		}
 	}
@@ -325,25 +324,26 @@ public class Round {
 	}
 
 	public boolean isBustPlayer() {return bustPlayer;}
-	public void setBustPlayer(boolean bustPlayer) {this.bustPlayer = bustPlayer;}
 	public int getPlayerBet() {return playerBet;}
-	public void setPlayerBet(int playerBet) {this.playerBet = playerBet;}
 	public List<Card> getDealerCards() {return dealerCards;}
 	public List<Card> getPlayerCards() {return playerCards;}
 	public String getGameMessage() {return gameMessage;}
-	public void setGameMessage(String gameMessage) {this.gameMessage = gameMessage;}
 	public boolean isPlayerHasBlackJack() {return playerHasBlackJack;}
-	public void setPlayerHasBlackJack(boolean playerHasBlackJack) {this.playerHasBlackJack = playerHasBlackJack;}
 	public String getPlayerHandValue() {return playerHandValue;}
-	public void setPlayerHandValue(String playerHandValue) {	this.playerHandValue = playerHandValue;}
 	public int getDealerHandValue() {return dealerHandValue;	}
-	public void setDealerHandValue(int dealerHandValue) {this.dealerHandValue = dealerHandValue;	}
 	public boolean isPlayerCanSplit() {	return playerCanSplit;}
-	public void setPlayerCanSplit(boolean playerCanSplit) {	this.playerCanSplit = playerCanSplit;}
 	public SplitHand getSplitHand() {	return splitHand;}
-	public void setSplitHand(SplitHand splitHand) {	this.splitHand = splitHand;}
 	public Player getPlayer() {return this.player;}
-	public void setPlayer(Player player) {this.player = player;}
 	public Result getResult() {return this.result;}
+	
+	public void setBustPlayer(boolean bustPlayer) {this.bustPlayer = bustPlayer;}
+	public void setPlayerBet(int playerBet) {this.playerBet = playerBet;}
+	public void setGameMessage(String gameMessage) {this.gameMessage = gameMessage;}
+	public void setPlayerHasBlackJack(boolean playerHasBlackJack) {this.playerHasBlackJack = playerHasBlackJack;}
+	public void setPlayerHandValue(String playerHandValue) {	this.playerHandValue = playerHandValue;}
+	public void setDealerHandValue(int dealerHandValue) {this.dealerHandValue = dealerHandValue;	}
+	public void setPlayerCanSplit(boolean playerCanSplit) {	this.playerCanSplit = playerCanSplit;}
+	public void setSplitHand(SplitHand splitHand) {	this.splitHand = splitHand;}
+	public void setPlayer(Player player) {this.player = player;}
 	public void setResult(Result result) {this.result = result;}
 }

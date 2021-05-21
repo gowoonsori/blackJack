@@ -4,8 +4,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.kpu.blackjack.domain.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
+@Transactional(propagation=Propagation.REQUIRED, isolation=Isolation.SERIALIZABLE)
 public class PlayerDAOImpl implements PlayerDAO {
 
 	@Autowired
@@ -13,8 +17,8 @@ public class PlayerDAOImpl implements PlayerDAO {
 	
 	private static final String namespace = "org.kpu.blackjack.mapper.PlayerMapper";
 	
+	@Transactional(readOnly=true)
 	public Player read(String name) throws Exception {
-		
 		Player player = sqlSession.selectOne(namespace+".getMoney", name);
 		return player;   
 	}
