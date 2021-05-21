@@ -224,3 +224,38 @@ h1 small {
 	font-size: 150%;
 	text-align: center;
 }
+
+.title {
+	text-align: center;
+    font-size: 5em;
+    margin: 150px 0 50px;
+}
+.loginForm{
+	text-align: center;
+    border: solid 1px #b4ad22;
+    width: 1080px;
+    padding: 20px 0;
+    margin: auto;
+}
+.inputBox{
+	display: flex;
+    font-size: 3em;
+    justify-content: space-evenly;
+}
+.nicknameInput{
+	width: 700;
+    border-radius: 10px;
+    border: none;
+    padding: 0 50px;
+    font-size: 1.5em;
+}
+.submitButton{
+	margin: 30px 0 5px;
+    width: 890px;
+    height: 70px;
+    font-size: 1.8em;
+    font-weight: bold;
+    background: #a51919;
+    color: #eee8e8;
+    border-radius: 10px;
+}

@@ -11,14 +11,14 @@
 
 <body>
 	<div class="bodywrapper">
-		<form name=form1 action="http://localhost:8888/blackjack/game" method="post">
-            <h2>로그인</h4>
-			<div class="loginId">
-				<h4>닉네임</h4>
-                <input type="text" name="nickname" value="nickname" id="nickname" placeholder="nickname">
+        <h2 class="title">BlackJack Login</h4>
+		<form name=form1 class="loginForm" action="http://localhost:8888/blackjack/game" method="post">
+			<div class="inputBox">
+				<h4 class="inputLabel">닉네임</h4>
+                <input type="text" name="nickname" class="nicknameInput" value="" id="nickname" placeholder="nickname">
             </div>
-            <div class="submit">
-                <input type="submit" value="submit">
+            <div>
+                <button class="submitButton" type="submit" value="submit">로그인</button>
             </div>
 		</form>
 	</div>

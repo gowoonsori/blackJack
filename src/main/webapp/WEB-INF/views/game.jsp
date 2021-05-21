@@ -6,7 +6,7 @@
 <html>
 
 <head>
-	<title>Round Of Blackjack</title>
+	<title>BlackJack | Gowoo</title>
 	<link href="../blackjack/resources/css/styles.css" rel="Stylesheet" type="text/css" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script src="../blackjack/resources/js/start.js" charset="utf-8"></script>
