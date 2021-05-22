@@ -228,7 +228,7 @@ h1 small {
 .title {
 	text-align: center;
     font-size: 5em;
-    margin: 150px 0 50px;
+    margin: 125px 0 75px;
 }
 .loginForm{
 	text-align: center;
@@ -241,6 +241,7 @@ h1 small {
 	display: flex;
     font-size: 3em;
     justify-content: space-evenly;
+    margin: 10px 0 40px;
 }
 .nicknameInput{
 	width: 700;

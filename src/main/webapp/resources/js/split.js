@@ -13,41 +13,51 @@ function playerSplits() {
 	playerSplitsButton = document.getElementById('playersplitsbutton');
 	playerSplitsButton.style.display = 'none';
 
-	$.getJSON(
-			"split.do",{},
-			function(data) {
-				var playerCards, playerMessage, cardImage, leftHitPlayerButton, leftPlayerStandsButton, splitCardsLeft, splitCardsRight;
+	$.ajax({
+		url:"split.do",
+		data: {},
+		type:"GET",
+		dataType: "json"
+	}).done(function(data) {
+		var playerCards, playerMessage, cardImage, leftHitPlayerButton, leftPlayerStandsButton, splitCardsLeft, splitCardsRight;
 
-				playerCards = document.getElementById('playercards');
-				playerCards.style.display = 'none';
+		playerCards = document.getElementById('playercards');
+		playerCards.style.display = 'none';
 
-				playerMessage = document.getElementById('playermessage');
-				playerMessage.style.display = 'none';
+		playerMessage = document.getElementById('playermessage');
+		playerMessage.style.display = 'none';
 				
-				document.getElementById('gamemessages').style.visibility = 'visible';
-				document.getElementById('gamemessages').innerHTML = data.gameMessage;
+		document.getElementById('gamemessages').style.visibility = 'visible';
+		document.getElementById('gamemessages').innerHTML = data.gameMessage;
 				
-				splitCardsLeft = document.getElementById('splitcardsleft');
-				splitCardsLeft.style.display = 'inline';
+		splitCardsLeft = document.getElementById('splitcardsleft');
+		splitCardsLeft.style.display = 'inline';
 				
-				splitCardsRight = document.getElementById('splitcardsright');
-				splitCardsRight.style.display = 'inline';
+		splitCardsRight = document.getElementById('splitcardsright');
+		splitCardsRight.style.display = 'inline';
 
-				cardImage = "resources/images/"+ data.splitHand.splitLeftCards[0].rank	+ data.splitHand.splitLeftCards[0].suit + ".png";
-				$('#splitcardsleft').append($('<img src= ' + cardImage + '>').fadeIn(2000));
+		cardImage = "resources/images/"+ data.splitHand.splitLeftCards[0].rank	+ data.splitHand.splitLeftCards[0].suit + ".png";
+		$('#splitcardsleft').append($('<img src= ' + cardImage + '>').fadeIn(2000));
 											
-				cardImage = "resources/images/"	+ data.splitHand.splitRightCards[0].rank	+ data.splitHand.splitRightCards[0].suit + ".png";
-				$('#splitcardsright').append($('<img src= ' + cardImage + '>').fadeIn(	2000));
+		cardImage = "resources/images/"	+ data.splitHand.splitRightCards[0].rank	+ data.splitHand.splitRightCards[0].suit + ".png";
+		$('#splitcardsright').append($('<img src= ' + cardImage + '>').fadeIn(	2000));
 
-				leftHitPlayerButton = document.getElementById('lefthitplayerbutton');
-				leftHitPlayerButton.style.display = 'inline';
-				leftHitPlayerButton.disabled = false;
+		leftHitPlayerButton = document.getElementById('lefthitplayerbutton');
+		leftHitPlayerButton.style.display = 'inline';
+		leftHitPlayerButton.disabled = false;
 
-				leftPlayerStandsButton = document.getElementById('leftplayerstandsbutton');
-				leftPlayerStandsButton.style.display = 'inline';
-				leftPlayerStandsButton.disabled = false;
+		leftPlayerStandsButton = document.getElementById('leftplayerstandsbutton');
+		leftPlayerStandsButton.style.display = 'inline';
+		leftPlayerStandsButton.disabled = false;
 				
-				document.getElementById('credits').innerHTML = "총 잔액: "+ data.player.money;
-				document.getElementById('bet').innerHTML = "배팅 금액: "	+ data.playerBet;
-			});
+		document.getElementById('credits').innerHTML = "총 잔액: "+ data.player.money;
+		document.getElementById('bet').innerHTML = "배팅 금액: "	+ data.playerBet;
+	}).fail(function(data,status,err){
+			alert(data.responseText);
+			if(data.status == 400){
+				document.getElementById('playerdoublesbutton').disabled = true;
+			}else if(data.status == 412){
+				window.location.replace("/blackjack/");
+			}
+	});
 }

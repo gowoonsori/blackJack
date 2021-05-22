@@ -8,18 +8,18 @@
 <head>
 	<title>BlackJack | Gowoo</title>
 	<link href="../blackjack/resources/css/styles.css" rel="Stylesheet" type="text/css" />
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	<script src="../blackjack/resources/js/start.js" charset="utf-8"></script>
-	<script src="../blackjack/resources/js/hit.js" charset="utf-8"></script>
-	<script src="../blackjack/resources/js/stand.js" charset="utf-8"></script>
-	<script src="../blackjack/resources/js/double.js" charset="utf-8"></script>
-	<script src="../blackjack/resources/js/split.js" charset="utf-8"></script>
-	<script src="../blackjack/resources/js/changes-bet.js" charset="utf-8"></script>
-	<script src="../blackjack/resources/js/split-left-hit.js" charset="utf-8"></script>
-	<script src="../blackjack/resources/js/split-right-hit.js" charset="utf-8"></script>
-	<script src="../blackjack/resources/js/split-left-stand.js" charset="utf-8"></script>
-	<script src="../blackjack/resources/js/split-right-stand.js" charset="utf-8"></script>
-	<script src="../blackjack/resources/js/toggle-button-visibility.js" charset="utf-8"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="../blackjack/resources/js/start.js?v=<%=System.currentTimeMillis() %>" charset="utf-8"></script>
+	<script src="../blackjack/resources/js/hit.js?v=<%=System.currentTimeMillis() %>" charset="utf-8"></script>
+	<script src="../blackjack/resources/js/stand.js?v=<%=System.currentTimeMillis() %>" charset="utf-8"></script>
+	<script src="../blackjack/resources/js/double.js?v=<%=System.currentTimeMillis() %>" charset="utf-8"></script>
+	<script src="../blackjack/resources/js/split.js?v=<%=System.currentTimeMillis() %>" charset="utf-8"></script>
+	<script src="../blackjack/resources/js/changes-bet.js?v=<%=System.currentTimeMillis() %>" charset="utf-8"></script>
+	<script src="../blackjack/resources/js/split-left-hit.js?v=<%=System.currentTimeMillis() %>" charset="utf-8"></script>
+	<script src="../blackjack/resources/js/split-right-hit.js?v=<%=System.currentTimeMillis() %>" charset="utf-8"></script>
+	<script src="../blackjack/resources/js/split-left-stand.js?v=<%=System.currentTimeMillis() %>" charset="utf-8"></script>
+	<script src="../blackjack/resources/js/split-right-stand.js?v=<%=System.currentTimeMillis() %>" charset="utf-8"></script>
+	<script src="../blackjack/resources/js/toggle-button-visibility.js?v=<%=System.currentTimeMillis() %>" charset="utf-8"></script>
 </head>
 
 <body>

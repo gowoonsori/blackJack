@@ -18,7 +18,7 @@
                 <input type="text" name="nickname" class="nicknameInput" value="" id="nickname" placeholder="nickname">
             </div>
             <div>
-                <button class="submitButton" type="submit" value="submit">로그인</button>
+                <button class="submitButton" type="submit" value="submit">시작하기</button>
             </div>
 		</form>
 	</div>
