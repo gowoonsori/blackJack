@@ -2,6 +2,7 @@ package org.kpu.blackjack.control;
 
 import org.kpu.blackjack.domain.Round;
 import org.kpu.blackjack.services.BlackJackService;
+import org.kpu.exception.ChangeBettingMoneyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +31,7 @@ public final class BlackJackController {
 	}
 
 	@RequestMapping("/double")
-	public Round playerDoubles() {
+	public Round playerDoubles() throws Exception {
 		Round round =blackJackService.playerDoubles();
 		return round;
 	}
@@ -78,7 +79,7 @@ public final class BlackJackController {
 	}
 	
 	@RequestMapping("/change")
-	public Round changeBet(@RequestParam("money") String money) {
+	public Round changeBet(@RequestParam("money") String money) throws ChangeBettingMoneyException{
 		Round round = blackJackService.changeBet( money);
 		return round;
 	}

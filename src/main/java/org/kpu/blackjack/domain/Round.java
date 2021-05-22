@@ -21,6 +21,22 @@ public class Round {
 	private int dealerHandValue;
 	private String gameMessage = "";
 	
+	/*init*/
+	public void init() {
+		this.playerCards.clear();
+		this.playerHandValue="";
+		this.splitHand = null;
+		this.playerHasBlackJack = false;
+		this.playerCanSplit = false;
+		this.bustPlayer = false;
+		this.result = Result.DRAW;
+		this.player = null;
+		this.playerBet = Consts.STARTING_BET;
+		this.dealerCards.clear();
+		this.dealerHandValue = 0;
+		this.gameMessage = "";
+	}
+	
 	/*카드 값 계산*/
 	public void calculateHandValues(boolean thePlayerIsFinishedDrawingCards) {
 		int total = 0;
@@ -222,10 +238,7 @@ public class Round {
 
 	/*최소 배팅금액보다 잔액이 적은지 검사*/
 	public void checkIfPlayerLowOnCredits() {
-		if (this.player.getMoney() < Consts.LOW_CREDITS_VALUE) {
-			this.player.setMoney( Consts.STARTING_CREDITS );
-			this.gameMessage = Consts.LOW_CREDITS_MESSAGE;
-		}
+		if (this.player.getMoney() < Consts.LOW_CREDITS_VALUE) this.gameMessage = Consts.LOW_CREDITS_MESSAGE;
 	}
 
 	/*split할 수 있는 지 검사*/

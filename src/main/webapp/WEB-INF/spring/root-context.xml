@@ -41,6 +41,7 @@
    	<context:component-scan base-package="org.kpu.blackjack.domain" />
    	<context:component-scan base-package="org.kpu.blackjack.services" />
    	<context:component-scan base-package="org.kpu.blackjack.dao" />	
+   	<context:component-scan base-package="org.kpu.exception" />
    	<context:component-scan base-package="org.kpu.aop"/>
    	
   	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>

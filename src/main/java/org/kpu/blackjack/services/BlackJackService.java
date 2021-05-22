@@ -1,6 +1,7 @@
 package org.kpu.blackjack.services;
 
 import org.kpu.blackjack.domain.Round;
+import org.kpu.exception.ChangeBettingMoneyException;
 
 public interface BlackJackService {
 
@@ -10,11 +11,11 @@ public interface BlackJackService {
 
 	Round hitPlayer();
 
-	Round playerDoubles();
+	Round playerDoubles() throws Exception;
 	
 	Round playerStands();
 
-	Round changeBet(String betSize);
+	Round changeBet(String betSize) throws ChangeBettingMoneyException;
 
 	Round playerSplits();
 

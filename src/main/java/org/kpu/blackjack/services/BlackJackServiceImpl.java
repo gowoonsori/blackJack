@@ -5,6 +5,7 @@ import org.kpu.blackjack.domain.Deck;
 import org.kpu.blackjack.domain.Player;
 import org.kpu.blackjack.domain.Result;
 import org.kpu.blackjack.domain.Round;
+import org.kpu.exception.ChangeBettingMoneyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -29,6 +30,7 @@ public final class BlackJackServiceImpl implements BlackJackService {
 
 	@Override
 	public Round startGame(String name) throws Exception {
+		round.init();
 		Player player = playerDao.read(name);
 		if(player == null) {
 			System.out.println(name);
@@ -41,7 +43,7 @@ public final class BlackJackServiceImpl implements BlackJackService {
 	
 	
 	@Override
-	public Round startRound() {
+	public Round startRound(){
 		boolean playerFinishedDrawingCards = false;
 		round.setResult(Result.DRAW);
 		round.setSplitHand(null);
@@ -81,10 +83,14 @@ public final class BlackJackServiceImpl implements BlackJackService {
 	}
 
 	@Override
-	public Round playerDoubles() {	
+	public Round playerDoubles() throws Exception {	
 		boolean isPlayer = true;
 		boolean playerFinishedDrawingCards = false;
 		boolean isSplit = false;
+		
+		if(round.getPlayer().getMoney() < round.getPlayerBet()*2) {
+			throw new ChangeBettingMoneyException();
+		}
 		round.setPlayerBet(2 * round.getPlayerBet());
 		this.playerDoubledBet = true;
 		
@@ -132,12 +138,11 @@ public final class BlackJackServiceImpl implements BlackJackService {
 	/*배팅 금액 변경*/
 	@Override
 	@Transactional(propagation=Propagation.NOT_SUPPORTED)
-	public Round changeBet(String betSize) {		
-		if (Integer.valueOf(betSize) <= 0) {
-			throw new IllegalArgumentException("Invalid Value " + betSize);			
+	public Round changeBet(String money) throws ChangeBettingMoneyException {		
+		if(Integer.valueOf(money) > round.getPlayer().getMoney()) {
+			throw new ChangeBettingMoneyException();
 		}
-		
-		round.setPlayerBet(Integer.valueOf(betSize));
+		round.setPlayerBet(Integer.valueOf(money));
 		playerDoubledBet = false;
 		return round;
 	}
