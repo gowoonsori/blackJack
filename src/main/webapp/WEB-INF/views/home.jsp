@@ -12,7 +12,7 @@
 <body>
 	<div class="bodywrapper">
         <h2 class="title">BlackJack Login</h4>
-		<form name=form1 class="loginForm" action="http://localhost:8888/blackjack/game" method="post">
+		<form name=form1 class="loginForm" action="/blackjack/game" method="post">
 			<div class="inputBox">
 				<h4 class="inputLabel">닉네임</h4>
                 <input type="text" name="nickname" class="nicknameInput" value="" id="nickname" placeholder="nickname">

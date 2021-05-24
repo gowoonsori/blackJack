@@ -6,7 +6,7 @@
 	<groupId>org.kpu</groupId>
 	<artifactId>blackjack</artifactId>
 	<name>free_hes</name>
-	<version>1.0.0-BUILD-SNAPSHOT</version>
+	<version>1.0.0</version>
 	
 	<properties>
 		<java-version>1.8</java-version>
