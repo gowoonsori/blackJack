@@ -60,4 +60,5 @@ java -jar target/blackjack-1.0.0.jar
 
 ## 개선할 점
 
-- split 오류2(처음 split선택에서 split안했을때 split선택가능한 문제)
+- split 오류(처음 split선택에서 split안했을때 split선택가능한 문제)
+- 사이트 다수유저 동시접속하여 게임실행 불가(Round 정보를 DB에 업데이트하도록 수정)
